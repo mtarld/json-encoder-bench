@@ -1,0 +1,257 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PHPBench Report</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body class="container">
+                <h1>PHPBench Report</h1>
+        <hr/>
+                    <div>
+                                <div>
+            <h2>SerializerBench</h2>
+                                <div>
+                    <ul class="nav nav-tabs" id="tab-group-phpbench-component-5" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link active" 
+                        id="tab-button-phpbench-component-5-0" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#tab-content-phpbench-component-5-0" 
+                        aria-controls="#tab-content-phpbench-component-5-0" 
+                        aria-current="page" 
+                        >
+                        Time                    </button>
+                </li>
+                                            <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link " 
+                        id="tab-button-phpbench-component-5-1" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#tab-content-phpbench-component-5-1" 
+                        aria-controls="#tab-content-phpbench-component-5-1" 
+                        aria-current="page" 
+                        >
+                        Memory                    </button>
+                </li>
+                                    </ul>
+                <div class="tab-content">
+                  <div
+              class="tab-pane show active" 
+              id="tab-content-phpbench-component-5-0" 
+              role="tabpanel" 
+              aria-labelledby="tab-button-phpbench-component-5-0"
+          >
+<br/>
+              <div id="phpbench-component-6" width="400" height="100"></div>
+<script>
+var data = [
+        {
+        x: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+        name: '<current>',
+        y: [6473.802348336467,7226.199608610619,6795.958904109582,286237.09393346496,497339.37377690844],
+        type: 'bar',
+                error_y: {
+            type: 'data',
+            array: [153.16213631312405,126.84719153375056,119.73904960371115,5200.765447508665,3284.5652695600374],
+            visible: true,
+        }
+            },
+    ]
+var layout = {
+    barmode: 'group',
+    yaxis: {
+        tickmode: 'array',
+        tickvals: [0,49733.93737769085,99467.8747553817,149201.81213307253,198935.7495107634,248669.68688845425,298403.62426614505,348137.5616438359,397871.4990215268,447605.43639921764],
+        ticktext: ["0.0<span style=\"color: #555; font-weight: bold;\">\u03bcs<\/span>\n","49.7<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","99.5<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","149.2<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","198.9<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","248.7<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","298.4<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","348.1<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","397.9<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n","447.6<span style=\"color: #555; font-weight: bold;\">ms<\/span>\n"]    },
+    xaxis: {
+        tickmode: 'array',
+        tickvals: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+        ticktext: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+    }
+};
+layout.title = "Average iteration times by variant";
+Plotly.newPlot(document.getElementById('phpbench-component-6'), data, layout);
+</script>
+          </div>
+                            <div
+              class="tab-pane " 
+              id="tab-content-phpbench-component-5-1" 
+              role="tabpanel" 
+              aria-labelledby="tab-button-phpbench-component-5-1"
+          >
+<br/>
+              <div id="phpbench-component-11" width="400" height="100"></div>
+<script>
+var data = [
+        {
+        x: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+        name: '<current>',
+        y: [7827671.999999819,7827815.999999819,7827672,15943120,16059248],
+        type: 'bar',
+                error_y: {
+            type: 'data',
+            array: [45.599999999999994,45.599999999999994,0,0,0],
+            visible: true,
+        }
+            },
+    ]
+var layout = {
+    barmode: 'group',
+    yaxis: {
+        tickmode: 'array',
+        tickvals: [0,1605924.8,3211849.6,4817774.4,6423699.2,8029624,9635548.8,11241473.6,12847398.4,14453323.200000001,16059248],
+        ticktext: ["0<span style=\"color: #555; font-weight: bold;\">b<\/span>\n","1.6<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","3.2<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","4.8<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","6.4<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","8.0<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","9.6<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","11.2<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","12.8<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","14.5<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n","16.1<span style=\"color: #555; font-weight: bold;\">mb<\/span>\n"]    },
+    xaxis: {
+        tickmode: 'array',
+        tickvals: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+        ticktext: ["bench-json_encode","bench-Marshaller (eager)","bench-Marshaller (lazy)","bench-Serializer (light)","bench-Serializer (heavy)"],
+    }
+};
+layout.title = "Memory by variant";
+Plotly.newPlot(document.getElementById('phpbench-component-11'), data, layout);
+</script>
+          </div>
+                          </div>
+    </div>
+                    <div>
+                    <ul class="nav nav-tabs" id="tab-group-phpbench-component-16" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                    <button 
+                        class="nav-link active" 
+                        id="tab-button-phpbench-component-16-0" 
+                        data-bs-toggle="tab" 
+                        data-bs-target="#tab-content-phpbench-component-16-0" 
+                        aria-controls="#tab-content-phpbench-component-16-0" 
+                        aria-current="page" 
+                        >
+                        &lt;current&gt;                    </button>
+                </li>
+                                    </ul>
+                <div class="tab-content">
+                  <div
+              class="tab-pane show active" 
+              id="tab-content-phpbench-component-16-0" 
+              role="tabpanel" 
+              aria-labelledby="tab-button-phpbench-component-16-0"
+          >
+<br/>
+              <table class="table table-striped table-bordered table-hover">
+            <caption>&lt;current&gt;</caption>
+        <thead class="thead-light">
+        <tr>
+                                    <th colspan=5></th>
+                        </tr>
+        <tr>
+                            <th>subject</th>
+                            <th>memory</th>
+                            <th>mode</th>
+                            <th>rstdev</th>
+                            <th>stdev</th>
+                    </tr>
+    </thead>
+    <tbody>
+                    <tr>
+            <td>bench (json_encode)</td>
+            <td>7.828<span style="color: #555; font-weight: bold;">mb</span>
+</td>
+            <td>6.474<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+            <td><span style="color: #050000">
+    <span style="color: #555; font-weight: bold;">±</span>
+2.39%</span>
+
+</td>
+            <td>153.162<span style="color: #555; font-weight: bold;">μs</span>
+</td>
+    </tr>
+                    <tr>
+            <td>bench (Marshaller (eager))</td>
+            <td>7.828<span style="color: #555; font-weight: bold;">mb</span>
+</td>
+            <td>7.226<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+            <td><span style="color: #020000">
+    <span style="color: #555; font-weight: bold;">±</span>
+1.75%</span>
+
+</td>
+            <td>126.847<span style="color: #555; font-weight: bold;">μs</span>
+</td>
+    </tr>
+                    <tr>
+            <td>bench (Marshaller (lazy))</td>
+            <td>7.828<span style="color: #555; font-weight: bold;">mb</span>
+</td>
+            <td>6.796<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+            <td><span style="color: #020000">
+    <span style="color: #555; font-weight: bold;">±</span>
+1.76%</span>
+
+</td>
+            <td>119.739<span style="color: #555; font-weight: bold;">μs</span>
+</td>
+    </tr>
+                    <tr>
+            <td>bench (Serializer (light))</td>
+            <td>15.943<span style="color: #555; font-weight: bold;">mb</span>
+</td>
+            <td>286.237<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+            <td><span style="color: #020000">
+    <span style="color: #555; font-weight: bold;">±</span>
+1.80%</span>
+
+</td>
+            <td>5.201<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+    </tr>
+                    <tr>
+            <td>bench (Serializer (heavy))</td>
+            <td>16.059<span style="color: #555; font-weight: bold;">mb</span>
+</td>
+            <td>497.339<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+            <td><span style="color: #000000">
+    <span style="color: #555; font-weight: bold;">±</span>
+0.66%</span>
+
+</td>
+            <td>3.285<span style="color: #555; font-weight: bold;">ms</span>
+</td>
+    </tr>
+            </tbody>
+</table>
+          </div>
+                          </div>
+    </div>
+            </div>
+            </div>
+    </body>
+    <footer>
+        <center>
+        Generated by <a href="https://github.com/phpbench/phpbench">PHPBench</a>
+        </center>
+    </footer>
+    <script type="text/javascript">
+    /**
+     * Resize Plots when tab is activated
+     */
+    (function () {
+        var tabEls = document.querySelectorAll('button[data-bs-toggle="tab"]')
+        tabEls.forEach(function (tabEl) {
+            tabEl.addEventListener('shown.bs.tab', function (event) {
+console.log(event);
+                var docs = event.target.parentNode.parentNode.parentNode.querySelectorAll('.tab-pane.active .js-plotly-plot');
+                docs.forEach(function (plotEl) {
+                    Plotly.relayout(plotEl, {autosize: true});
+                });
+            });
+        });
+    })();
+    </script>
+</html>
