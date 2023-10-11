@@ -9,26 +9,29 @@ use App\Dto\Relation;
 use App\SerializerFactory;
 use PhpBench\Attributes as Bench;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\JsonMarshaller\UnmarshallerInterface;
-use Symfony\Component\JsonMarshaller\Type\Type;
+use Symfony\Component\Encoder\DecoderInterface;
+use Symfony\Component\Encoder\StreamingDecoderInterface;
+use Symfony\Component\Encoder\Stream\MemoryStream;
+use Symfony\Component\Encoder\Stream\Stream;
+use Symfony\Component\TypeInfo\Type;
 
 final class DeserializerBench
 {
     private SerializerInterface $lightSerializer;
     private SerializerInterface $heavySerializer;
-    private UnmarshallerInterface $eagerUnmarshaller;
-    private UnmarshallerInterface $lazyUnmarshaller;
+    private DecoderInterface $decoder;
+    private StreamingDecoderInterface $streamingDecoder;
 
     public function setUp(): void
     {
         $this->lightSerializer = SerializerFactory::lightSerializer();
         $this->heavySerializer = SerializerFactory::heavySerializer();
-        $this->eagerUnmarshaller = SerializerFactory::eagerUnmarshaller();
-        $this->lazyUnmarshaller = SerializerFactory::lazyUnmarshaller();
+        $this->decoder = SerializerFactory::decoder();
+        $this->streamingDecoder = SerializerFactory::streamingDecoder();
 
         // warm up templates
-        $this->eagerUnmarshaller->unmarshal('[]', Type::list(Type::class(Element::class)));
-        $this->lazyUnmarshaller->unmarshal('[]', Type::iterableList(Type::class(Element::class)));
+        $this->decoder->decode('[]', Type::list(Type::object(Element::class)));
+        $this->streamingDecoder->decode(new MemoryStream('[]'), Type::iterableList(Type::object(Element::class)));
     }
 
 
@@ -38,8 +41,8 @@ final class DeserializerBench
     public function provideSerializer(): \Generator
     {
         yield 'json_decode' => ['serializer' => 'json_decode'];
-        yield 'Unmarshaller (eager)' => ['serializer' => 'eager_unmarshaller'];
-        yield 'Unmarshaller (lazy)' => ['serializer' => 'lazy_unmarshaller'];
+        yield 'Json decoder' => ['serializer' => 'decoder'];
+        yield 'Json streaming decoder' => ['serializer' => 'streaming_decoder'];
         yield 'Serializer (light)' => ['serializer' => 'light_serializer'];
         yield 'Serializer (heavy)' => ['serializer' => 'heavy_serializer'];
     }
@@ -90,15 +93,15 @@ final class DeserializerBench
             return;
         }
 
-        if ('eager_unmarshaller' === $serializer) {
-            $elements = $this->eagerUnmarshaller->unmarshal(file_get_contents('deserialize.json'), Type::list(Type::class(Element::class)));
+        if ('decoder' === $serializer) {
+            $elements = $this->decoder->decode(file_get_contents('deserialize.json'), Type::list(Type::object(Element::class)));
             $this->read($elements);
 
             return;
         }
 
-        if ('lazy_unmarshaller' === $serializer) {
-            $elements = $this->lazyUnmarshaller->unmarshal(fopen('deserialize.json', 'r+'), Type::iterableList(Type::class(Element::class)));
+        if ('streaming_decoder' === $serializer) {
+            $elements = $this->streamingDecoder->decode(new Stream('deserialize.json', 'r+'), Type::iterableList(Type::object(Element::class)));
             $this->read($elements);
 
             return;

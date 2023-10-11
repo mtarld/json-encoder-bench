@@ -1,19 +1,19 @@
 {
-    "name": "mtarld/serializer-benchmark",
+    "name": "mtarld/json-encoder-bench",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
-        {"type": "path", "url": "../symfony/src/Symfony/Component/JsonMarshaller/"}
+        {"type": "path", "url": "../symfony/src/Symfony/Component/Encoder/"},
+        {"type": "path", "url": "../symfony/src/Symfony/Component/Json/"},
+        {"type": "path", "url": "../symfony/src/Symfony/Component/TypeInfo/"}
     ],
     "require": {
         "symfony/serializer": "*",
         "symfony/property-access": "*",
         "symfony/console": "^6.3",
-        "symfony/json-marshaller": "*",
-        "phpstan/phpdoc-parser": "^1.23",
-        "phpdocumentor/reflection-docblock": "^5.3",
-        "symfony/var-exporter": "*",
-        "symfony/cache": "7.0.x-dev"
+        "symfony/json": "*",
+        "symfony/cache": "7.0.x-dev",
+        "phpdocumentor/reflection-docblock": "^5.3"
     },
     "require-dev": {
         "phpbench/phpbench": "^1.2"
